@@ -21,10 +21,8 @@ public class Vote {
     private Double shares;
     @Column(name = "execution")
     private Date execution;
-
     @Column(name="elector_id")
     private Integer elector_id;
-
     @Column(name = "nomination_id")
     private Integer nomination_id ;
 

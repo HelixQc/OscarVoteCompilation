@@ -14,10 +14,10 @@ import java.sql.SQLException;
 public abstract class ConnectionDAO {
 
     //connection to Database is here!!!!
-    protected static final String DB_HOST = "jdbc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
-    protected static final String DB_NAME ="helixqc_oscar";
-    protected static final String DB_USER = "helixqc";
-    protected static final String DB_PASSWORD = "Jujube98!";
+    protected static final String DB_HOST = "The Host URL Here";
+    protected static final String DB_NAME ="Your dbName";
+    protected static final String DB_USER = "Your username";
+    protected static final String DB_PASSWORD = "Your Password";
     protected static final String DB_URL = DB_HOST + DB_NAME;
     protected Connection connection ;
 

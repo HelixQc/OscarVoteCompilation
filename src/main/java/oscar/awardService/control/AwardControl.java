@@ -30,12 +30,23 @@ public class AwardControl {
     private int today = 2024;
     private int maxID = 0;
 
+    //Memory
+    private AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
+    private NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
+    private VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
+
+    //JDBC
+    private NominationDAO_DB_JDBC nominationDAO_DB_JDBC ;
+    private AwardDAO_DB_JDBC awardDAO_db_JDBC ;
+    private VoteDAO_JDBC voteDAO_jdbc ;
+
+    //JPA
+    private NominationDAO_JPA nominationDAO_jpa ;
+    private AwardDAO_JPA awardDAO_jpa ;
+    private VoteDAO_JPA voteDAO_jpa ;
+
 
     public void createNomination(){
-        //Memory
-        AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
-        NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
-        VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
 
         System.out.println("Please enter the nomination work : ");
         String responce = sc.nextLine();
@@ -50,7 +61,7 @@ public class AwardControl {
 
         awardDAOMemory.findAwardByName(yourAwnser);
 
-        Nomination n = new Nomination(3, this.today,shares, responce, voteDAOMemory.readVote() ,awardDAOMemory.findAllAward());
+        Nomination n = new Nomination(3, today,shares, responce, voteDAOMemory.readVote() ,awardDAOMemory.findAllAward());
 
         nominationDAOMemory.findAllNomination().add(n);
         System.out.println(nominate(awardDAOMemory.findAwardByName(yourAwnser), n ));
@@ -58,10 +69,7 @@ public class AwardControl {
 
 
     public void createNominationJDBC(){
-        //JDBC
-        NominationDAO_DB_JDBC nominationDAO_DB_JDBC = new NominationDAO_DB_JDBC();
-        AwardDAO_DB_JDBC awardDAO_db_JDBC = new AwardDAO_DB_JDBC();
-        VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();
+
 
         System.out.println("Please enter the nomination work : ");
         String responce = sc.nextLine();
@@ -85,10 +93,6 @@ public class AwardControl {
     }
 
     public void createNominationJPA(){
-        //JPA
-        NominationDAO_JPA nominationDAO_jpa = new NominationDAO_JPA();
-        AwardDAO_JPA awardDAO_jpa = new AwardDAO_JPA();
-        VoteDAO_JPA voteDAO_jpa = new VoteDAO_JPA();
 
         System.out.println("Please enter the nomination work : ");
         String responce = sc.nextLine();
@@ -101,7 +105,7 @@ public class AwardControl {
         showTheAwardListJDBC();
         String yourAwnser = sc.nextLine();
 
-        awardDAO_jpa.findAwardByName(yourAwnser);
+       awardDAO_jpa.findAwardByName(yourAwnser);
 
         //Need fixe with jpa
         Nomination n = new Nomination(defineMaxId(), this.today, shares, responce,voteDAO_jpa.readVote(),awardDAO_jpa.findAllAward());
@@ -113,8 +117,7 @@ public class AwardControl {
 
     public void showTheAwardListMemory() {
         //Getting award data
-        AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
-        List<Award> awards = awardDAOMemory.findAllAward();
+        List<Award> awards = this.awardDAOMemory.findAllAward();
 
         //Print the Data
         for (int i = 0; i <  awards.size() ; i++) {
@@ -123,7 +126,7 @@ public class AwardControl {
     }
 
     public void showTheAwardListJDBC(){
-        AwardDAO_DB_JDBC awardDAO_db_JDBC = new AwardDAO_DB_JDBC();
+
         //Getting the data
         List<Award> awards = awardDAO_db_JDBC.findAllAward();
 
@@ -134,7 +137,6 @@ public class AwardControl {
 
     public void showTheAwardListJPA(){
         //Getting the data
-        AwardDAO_JPA awardDAO_jpa = new AwardDAO_JPA();
         List<Award> awards = awardDAO_jpa.findAllAward();
 
         for(Award a : awards){
@@ -143,8 +145,8 @@ public class AwardControl {
     }
 
     public int defineMaxId(){
-        AwardDAO_JPA awardDAO_jpa = new AwardDAO_JPA();
-        for(Award a : awardDAO_jpa.findAllAward()){
+
+        for(Award a :awardDAO_jpa.findAllAward()){
             if(this.maxID < a.getId()){
                 this.maxID = a.getId();
             }
@@ -156,4 +158,9 @@ public class AwardControl {
         return "The Nominated work is " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
     }
 
+    public static void main(String[] args) {
+        AwardControl test = new AwardControl();
+        test.showTheAwardListJPA();
+        test.showTheAwardListJDBC();
+    }
 }

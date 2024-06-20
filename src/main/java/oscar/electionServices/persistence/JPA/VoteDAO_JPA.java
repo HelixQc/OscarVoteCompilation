@@ -6,6 +6,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import oscar.awardService.persistence.JPA.EntityManagerProvider;
 import oscar.electionServices.persistence.OscarPersistenceUnitInfo;
 import oscar.electionServices.model.Vote;
 import oscar.electionServices.persistence.IVoteDAO;
@@ -18,10 +19,11 @@ public class VoteDAO_JPA implements IVoteDAO {
 
     public VoteDAO_JPA(){
 
-        PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
+      /*  PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(pui, null);
-        this.em = emf.createEntityManager();
+        this.em = emf.createEntityManager();*/
+        this.em = EntityManagerProvider.getEntityManager();
 
     }
 

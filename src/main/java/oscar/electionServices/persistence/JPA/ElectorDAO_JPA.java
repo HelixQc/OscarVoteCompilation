@@ -6,6 +6,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import oscar.awardService.persistence.JPA.EntityManagerProvider;
 import oscar.electionServices.persistence.OscarPersistenceUnitInfo;
 import oscar.electionServices.model.Elector;
 import oscar.electionServices.persistence.IElectorDAO;
@@ -17,10 +18,11 @@ public class ElectorDAO_JPA implements IElectorDAO {
     EntityManager em = null;
 
     public ElectorDAO_JPA(){
-        PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
+       /* PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(pui, null);
-        this.em = emf.createEntityManager();
+        this.em = emf.createEntityManager();*/
+        this.em = EntityManagerProvider.getEntityManager();
     }
 
     public Elector findElectorById(int id){

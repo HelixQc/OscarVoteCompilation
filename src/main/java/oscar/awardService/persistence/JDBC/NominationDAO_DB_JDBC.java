@@ -16,7 +16,6 @@ import java.util.List;
 
 public class NominationDAO_DB_JDBC extends ConnectionDAO implements INominationDAO {
 
-
     VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();
     AwardDAO_DB_JDBC awardDAO_db = new AwardDAO_DB_JDBC();
     List<Award> awards = awardDAO_db.findAllAward();

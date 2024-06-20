@@ -19,10 +19,11 @@ public class NominationDAO_JPA implements INominationDAO {
     EntityManager em = null;
 
     public NominationDAO_JPA(){
-        PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
+       /* PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(pui, null);
-        this.em = emf.createEntityManager();
+        this.em = emf.createEntityManager();*/
+        this.em = EntityManagerProvider.getEntityManager();
     }
 
 
