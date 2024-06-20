@@ -28,7 +28,6 @@ import java.util.List;
 
 public class SeeNomination {
 
-
     public List<Winner> VoteFilterMemory() {
         NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
         AwardNominationDAO_Memory brigdesAwardNominationMemory = new AwardNominationDAO_Memory();
@@ -102,7 +101,6 @@ public class SeeNomination {
 
     public List<Winner> VoteFilterJPA() {
 
-        //A ameliorer puisque la jpa fonctionne differament i think
         NominationDAO_JPA nominationDAO_JPA = new NominationDAO_JPA();
         AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
         AwardDAO_JPA awardDAO_JPA = new AwardDAO_JPA();
@@ -137,8 +135,6 @@ public class SeeNomination {
         return winners;
     }
 
-
-
     public double calculerShare(Nomination nomination) {
         double myShares = 0;
         for (Vote vote : nomination.getVotes()) {
@@ -160,7 +156,6 @@ public class SeeNomination {
             }
         }
     }
-
 }
 
 

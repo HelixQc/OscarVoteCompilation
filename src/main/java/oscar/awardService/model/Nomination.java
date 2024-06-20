@@ -24,7 +24,8 @@ public class Nomination {
     @Column(name="nominatedWork")
     private String nominatedWork;
 
-    @OneToMany(mappedBy = "nomination_id")
+    @OneToMany
+    @JoinColumn(name ="nomination_id")
     private List<Vote> votes;
 
     @ManyToMany
@@ -117,7 +118,6 @@ public class Nomination {
     public String toString() {
         return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s'",
                 year, obtainedShares, nominatedWork);
-
     }
 }
 

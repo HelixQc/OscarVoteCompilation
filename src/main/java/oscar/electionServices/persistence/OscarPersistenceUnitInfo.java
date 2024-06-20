@@ -34,6 +34,7 @@ public class OscarPersistenceUnitInfo implements PersistenceUnitInfo {
         return managedClasses;
     }
 
+    //I'm using alwaysData and a mariaDb database
     @Override
     public Properties getProperties() {
         Properties properties = new Properties();
@@ -42,9 +43,9 @@ public class OscarPersistenceUnitInfo implements PersistenceUnitInfo {
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.ejb.interceptor", "org.hibernate.ejb.interceptor.EmptyInterceptor");
         properties.setProperty("javax.persistence.jdbc.driver", "org.mariadb.jdbc.Driver");
-        properties.setProperty("javax.persistence.jdbc.url", "jdbc:mariadb://mysql-bdebuser.alwaysdata.net:3306/helixqc_oscar");
-        properties.setProperty("javax.persistence.jdbc.user", "helixqc");
-        properties.setProperty("javax.persistence.jdbc.password", "Jujube98!");
+        properties.setProperty("javax.persistence.jdbc.url", "Put your URL database here!!!");
+        properties.setProperty("javax.persistence.jdbc.user", "Your username!!!");
+        properties.setProperty("javax.persistence.jdbc.password", "Your Password here");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MariaDBDialect");
         return properties;
     }

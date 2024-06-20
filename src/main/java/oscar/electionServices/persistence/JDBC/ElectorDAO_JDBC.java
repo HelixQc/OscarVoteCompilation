@@ -31,7 +31,6 @@ public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
 
             System.out.println("The Elector "+ e.getName() + " have been added with succes");
 
-
         }catch (SQLException sql){
             throw  new RuntimeException(sql);
         }
