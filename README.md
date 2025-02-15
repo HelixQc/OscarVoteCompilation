@@ -52,7 +52,7 @@ Before you begin, ensure you have the following installed:
     protected static final String DB_URL = DB_HOST + DB_NAME;
     protected Connection connection ;
     ```
-> Note You can also use in memory repositories that are already setup!
+> Note You can also use the In Memory Repositories that are already setup as a singleton!
 ### **Compile and Run**
 
 1. Open the project in your preferred IDE (e.g., **IntelliJ IDEA**, **Eclipse**).
