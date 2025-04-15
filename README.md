@@ -35,7 +35,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository using Git:
 
     ```bash
-    git clone https://github.com/YourUsername/OscarVoteCompilationProject.git
+   git clone https://github.com/HelixQc/OscarVoteCompilation.git
     ```
 
 ### **Configure Database**
